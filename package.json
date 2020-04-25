@@ -5,18 +5,56 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint --debug \"**/*.js\""
   },
   "dependencies": {
-    "expo": "~37.0.3",
-    "react": "~16.9.0",
-    "react-dom": "~16.9.0",
+    "@expo/vector-icons": "^10.0.0",
+    "@react-navigation/native": "^5.0.3",
+    "axios": "^0.19.0",
+    "expo": "^37.0.0",
+    "expo-constants": "~9.0.0",
+    "expo-font": "~8.1.0",
+    "firebase": "7.9.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-hook-form": "^4.1.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "^0.11.7",
+    "react-native-webview": "8.1.1",
+    "react-navigation": "^4.0.10",
+    "react-navigation-drawer": "^2.3.3",
+    "react-navigation-stack": "^1.10.3"
   },
   "devDependencies": {
-    "babel-preset-expo": "~8.1.0",
-    "@babel/core": "^7.8.6"
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "^8.1.0",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "eslint-plugin-react-native": "^3.7.0",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.18.2"
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "subTaskConcurrency": 1,
+    "linters": {
+      "*.{js,jsx}": [
+        "npm run prettier",
+        "git add",
+        "node_modules/.bin/jest --findRelatedTests"
+      ]
+    }
   },
   "private": true
 }
