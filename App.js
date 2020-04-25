@@ -1,19 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, Platform, StatusBar } from "react-native";
+import { createAppContainer } from "react-navigation";
 
-export default function App() {
+import Navigation from "./src/navigation";
+import NavigationService from "./src/services/navigation";
+import globalStyles from "./src/theme/global-styles";
+
+const AppContainer = createAppContainer(Navigation);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <View style={globalStyles.fullContainer}>
+      {Platform.OS === "ios" && <StatusBar barStyle="dark-content" />}
+      <AppContainer
+        ref={(navigatorRef) => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}
+      />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
